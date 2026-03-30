@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How DSOs Can Standardize, Streamline &amp; Gain Real-Time Visibility — ADSO Webinar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #1A3B69; }
+    .page { max-width: 1100px; margin: 0 auto; }
+
+    /* ── NAV ── */
+    .nav {
+      background: #fff;
+      border-bottom: 1px solid #e8edf4;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-wordmark {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: #1A3B69;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+    }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #7a93b0;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-back:hover { color: #1A3B69; }
+    .nav-sep { color: #c8d6e8; font-size: 14px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a {
+      font-size: 13px;
+      color: #7a93b0;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: #1A3B69; }
+    .nav-links a.active { color: #1A3B69; font-weight: 600; }
+
+    /* ── HERO ── */
+    .hero { background: #fff; padding: 40px 40px 0; }
+    .hero-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: #9ab0c8;
+      margin-bottom: 22px;
+    }
+    .hero-breadcrumb a { color: #9ab0c8; text-decoration: none; }
+    .hero-breadcrumb a:hover { color: #1A3B69; }
+    .hero-breadcrumb .sep { color: #c8d6e8; }
+    .hero-breadcrumb .current { color: #5a7399; }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 32px;
+      align-items: start;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #EFF3F8;
+      border: 1px solid #c8d6e8;
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin-bottom: 16px;
+    }
+    .hero-tag span { font-size: 10px; font-weight: 700; color: #3B6DA5; letter-spacing: 0.9px; text-transform: uppercase; }
+    .hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: #3B6DA5; }
+    .hero h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 27px;
+      font-weight: 800;
+      color: #1A3B69;
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+      margin-bottom: 18px;
+    }
+    .hero-meta { display: flex; flex-direction: column; gap: 9px; margin-bottom: 22px; }
+    .hero-meta-row { display: flex; align-items: center; gap: 9px; font-size: 14px; color: #5a7399; }
+    .hero-meta-row strong { color: #1A3B69; font-weight: 500; }
+    .hmr-icon { width: 14px; height: 14px; flex-shrink: 0; color: #9ab0c8; }
+    .hero-divider { height: 1px; background: #e8edf4; margin-top: 32px; }
+
+    /* ── REGISTRATION CARD ── */
+    .reg-card {
+      background: #1A3B69;
+      border-radius: 16px;
+      padding: 26px;
+    }
+    .reg-card-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: #7fa3c4;
+      margin-bottom: 6px;
+    }
+    .reg-card-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 18px;
+      line-height: 1.35;
+    }
+    .rcm-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 13px;
+      color: rgba(163,202,226,0.7);
+      margin-bottom: 8px;
+    }
+    .rcm-row strong { color: #fff; font-weight: 500; }
+    .rcm-icon { width: 13px; height: 13px; opacity: 0.45; flex-shrink: 0; }
+    .reg-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 18px 0; }
+    .reg-price { display: flex; align-items: baseline; gap: 7px; margin-bottom: 16px; }
+    .reg-price .amount {
+      font-family: 'Raleway', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .reg-price .note { font-size: 12px; color: #7fa3c4; }
+    .reg-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: #E8543A;
+      border: none;
+      border-radius: 9px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      text-align: center;
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      transition: background 0.18s;
+    }
+    .reg-btn:hover { background: #d14830; }
+    .reg-note { font-size: 12px; color: #7fa3c4; text-align: center; margin-top: 10px; }
+    .share-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .share-row span { font-size: 12px; color: #5a7ea8; }
+    .share-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* ── SECTION LABEL ── */
+    .sec-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #9ab0c8;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sec-label::after { content: ''; flex: 1; height: 1px; background: #e8edf4; }
+
+    /* ── CONTENT GRID ── */
+    .content {
+      padding: 32px 40px 0;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 32px;
+    }
+
+    /* About */
+    .about-text { font-size: 14px; color: #4a6080; line-height: 1.8; margin-bottom: 18px; }
+
+    /* Objectives */
+    .objectives {
+      background: #f8f9fc;
+      border: 1px solid #e8edf4;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 0;
+    }
+    .obj-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1A3B69;
+      margin-bottom: 16px;
+    }
+    .obj-list { display: flex; flex-direction: column; gap: 12px; }
+    .obj-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: #4a6080;
+      line-height: 1.6;
+    }
+    .obj-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #E8543A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar-card {
+      background: #f8f9fc;
+      border: 1px solid #e8edf4;
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .sidebar-card-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #1A3B69;
+      margin-bottom: 14px;
+    }
+    .related-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 11px 0;
+      border-bottom: 1px solid #e8edf4;
+    }
+    .related-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .ri-date { font-size: 10px; font-weight: 700; color: #E8543A; letter-spacing: 0.5px; }
+    .ri-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #1A3B69;
+      line-height: 1.45;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .ri-title:hover { color: #E8543A; }
+    .ri-tag { font-size: 11px; color: #9ab0c8; }
+    .sponsor-chip {
+      display: inline-flex;
+      background: #fff;
+      border: 1px solid #e8edf4;
+      border-radius: 7px;
+      padding: 6px 13px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #5a7399;
+      margin-right: 7px;
+      margin-bottom: 7px;
+    }
+
+    /* ── SPEAKERS — full width ── */
+    .speakers-section { padding: 32px 40px 0; }
+    .speaker-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .speaker-card {
+      background: #fff;
+      border: 1px solid #e8edf4;
+      border-radius: 14px;
+      padding: 24px 18px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: box-shadow 0.18s, border-color 0.18s;
+      cursor: default;
+    }
+    .speaker-card:hover { box-shadow: 0 6px 24px rgba(26,59,105,0.09); border-color: #c8d6e8; }
+    .speaker-photo {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Raleway', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      border: 3px solid #e8edf4;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .speaker-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    /* Placeholder colors per speaker */
+    .sp-1 { background: #1A3B69; color: #A3CAE2; border-color: #1A3B69; }
+    .sp-2 { background: #FFF0ED; color: #C04828; border-color: #F2A4A2; }
+    .sp-3 { background: #EFF3F8; color: #2d5a98; border-color: #c8d6e8; }
+    .sp-4 { background: #E8F5F1; color: #0e6b50; border-color: #9FE1CB; }
+
+    .speaker-name {
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1A3B69;
+      margin-bottom: 4px;
+      line-height: 1.25;
+    }
+    .speaker-divider { width: 30px; height: 2px; background: #E8543A; border-radius: 2px; margin: 10px auto 10px; }
+    .speaker-role { font-size: 12px; color: #7a93b0; line-height: 1.5; margin-bottom: 7px; }
+    .speaker-company { font-size: 12px; font-weight: 700; color: #1A3B69; }
+    .speaker-badge {
+      display: inline-flex;
+      padding: 3px 10px;
+      background: #FFF0ED;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #C04828;
+      margin-top: 8px;
+      border: 1px solid #F2A4A2;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-wrap { padding: 32px 40px 44px; }
+    .cta-banner {
+      background: #1A3B69;
+      border-radius: 16px;
+      padding: 34px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .cta-text h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .cta-text p { font-size: 14px; color: #7fa3c4; }
+    .cta-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+    .cta-main-btn {
+      padding: 14px 30px;
+      background: #E8543A;
+      border: none;
+      border-radius: 9px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.18s;
+    }
+    .cta-main-btn:hover { background: #d14830; }
+    .cta-sub { font-size: 12px; color: #5a7ea8; }
+
+    /* ── FOOTER ── */
+    .footer-strip {
+      background: #1A3B69;
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-strip p { font-size: 13px; color: rgba(163,202,226,0.65); }
+    .footer-links { display: flex; gap: 22px; }
+    .footer-links a {
+      font-size: 13px;
+      color: #5a7ea8;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: #A3CAE2; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="../index.html" class="nav-wordmark">ADSO</a>
+    <div class="nav-right">
+      <a href="../index.html" class="nav-back">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M8.5 3L5 7l3.5 4" stroke="#9ab0c8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to Events
+      </a>
+      <span class="nav-sep">|</span>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Membership</a>
+        <a href="../index.html" class="active">Events</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-breadcrumb">
+      <a href="../index.html">Events</a>
+      <span class="sep">›</span>
+      <span>Webinars</span>
+      <span class="sep">›</span>
+      <span class="current">How DSOs Can Standardize...</span>
+    </div>
+    <div class="hero-layout">
+      <div class="hero-left">
+        <div class="hero-tag"><div class="hero-tag-dot"></div><span>Webinar · Members Only</span></div>
+        <h1>How DSOs Can Standardize, Streamline, and Gain Real-Time Visibility</h1>
+        <div class="hero-meta">
+          <div class="hero-meta-row">
+            <svg class="hmr-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="2" stroke="#9ab0c8" stroke-width="1.2"/><path d="M5 2v2M11 2v2M2 7h12" stroke="#9ab0c8" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <strong>October 22, 2025</strong>
+            <span style="color:#c8d6e8">·</span>
+            <span>2:00 – 3:00 PM ET</span>
+          </div>
+          <div class="hero-meta-row">
+            <svg class="hmr-icon" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="2" width="13" height="12" rx="2" stroke="#9ab0c8" stroke-width="1.2"/><path d="M5 6h6M5 9h4" stroke="#9ab0c8" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span>Live Webinar via Zoom · 60 min</span>
+          </div>
+          <div class="hero-meta-row">
+            <svg class="hmr-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="3" stroke="#9ab0c8" stroke-width="1.2"/><path d="M2.5 13c0-2.5 2.5-4 5.5-4s5.5 1.5 5.5 4" stroke="#9ab0c8" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span>ADSO Members &amp; invited guests</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- REG CARD -->
+      <div class="reg-card">
+        <div class="reg-card-label">Registration</div>
+        <div class="reg-card-title">Reserve your spot for this webinar</div>
+        <div class="rcm-row">
+          <svg class="rcm-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="2" stroke="white" stroke-width="1.2"/><path d="M5 2v2M11 2v2M2 7h12" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <span><strong>Oct 22, 2025</strong> · 2–3 PM ET</span>
+        </div>
+        <div class="rcm-row">
+          <svg class="rcm-icon" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="2" width="13" height="12" rx="2" stroke="white" stroke-width="1.2"/><path d="M5 6h6M5 9h4" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <span>Zoom Webinar · 60 min</span>
+        </div>
+        <div class="reg-divider"></div>
+        <div class="reg-price"><span class="amount">Free</span><span class="note">for ADSO members</span></div>
+        <a class="reg-btn" href="https://us06web.zoom.us/webinar/register/WN_UDth7XnJRvyH7e_uWC2F4w" target="_blank" rel="noopener">Register on Zoom →</a>
+        <div class="reg-note">Non-members: contact us to join</div>
+        <div class="share-row">
+          <span>Share</span>
+          <div class="share-btn"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M12 2.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM4 7a1.5 1.5 0 1 1 0 3A1.5 1.5 0 0 1 4 7zm8 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" stroke="#A3CAE2" stroke-width="1.2"/><path d="M5.5 8.5l5-2.5M5.5 8.5l5 2" stroke="#A3CAE2" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div class="share-btn"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#A3CAE2" stroke-width="1.2"/><path d="M5.5 7v4M5.5 5v.5" stroke="#A3CAE2" stroke-width="1.4" stroke-linecap="round"/><path d="M8.5 11V8.5C8.5 7.7 9 7 10 7s1.5.7 1.5 1.5V11" stroke="#A3CAE2" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div class="share-btn"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M14 2L9 14l-2-5-5-2 12-5z" stroke="#A3CAE2" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-divider"></div>
+  </section>
+
+  <!-- CONTENT + SIDEBAR -->
+  <div class="content">
+    <div class="content-main">
+      <div class="sec-label">About this webinar</div>
+      <p class="about-text">In today's multi-location DSO environment, operational inefficiencies and inconsistent systems can slow growth and create unnecessary challenges for leadership. Join us for a session designed to equip DSOs with practical strategies to overcome these inefficiencies and gain the insights needed to scale confidently.</p>
+      <p class="about-text" style="margin-top:-10px;">Attendees will walk away with actionable approaches to standardize operations, streamline processes, and gain real-time visibility across all locations — no matter the size of their network.</p>
+
+      <div class="objectives">
+        <div class="obj-title">What you'll learn</div>
+        <div class="obj-list">
+          <div class="obj-item">
+            <div class="obj-check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            Understand common operational, financial, and staffing challenges DSOs face as they expand
+          </div>
+          <div class="obj-item">
+            <div class="obj-check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            Learn how standardizing systems, workflows, and processes can unlock sustainable growth
+          </div>
+          <div class="obj-item">
+            <div class="obj-check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            Explore the benefits of consolidating financial and administrative systems for multi-location management
+          </div>
+          <div class="obj-item">
+            <div class="obj-check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            Identify the KPIs that matter most during periods of rapid growth and how to interpret them
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Related webinars</div>
+        <div class="related-item">
+          <div class="ri-date">Dec 2025</div>
+          <a href="#" class="ri-title">CEO Straight Talks: Inside the C-Suite with Dustin Netral</a>
+          <div class="ri-tag">Leadership</div>
+        </div>
+        <div class="related-item">
+          <div class="ri-date">Sep 2025</div>
+          <a href="#" class="ri-title">Back to Basics: Streamlining DSOs for Maximum Efficiency</a>
+          <div class="ri-tag">Operations</div>
+        </div>
+        <div class="related-item">
+          <div class="ri-date">Jul 2025</div>
+          <a href="#" class="ri-title">Partnerships &amp; Equity Solutions for Organizational Growth</a>
+          <div class="ri-tag">Finance</div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Presented by</div>
+        <div>
+          <span class="sponsor-chip">ADSO</span>
+          <span class="sponsor-chip">ADSO Exchange</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card" style="background:#FFF8EE;border-color:#F2DBB3;">
+        <div class="sidebar-card-title" style="color:#9B5A0A;">Not a member yet?</div>
+        <p style="font-size:13px;color:#7a6040;line-height:1.65;margin-bottom:14px;">Get access to all ADSO webinars and exclusive member resources.</p>
+        <a href="#" style="display:block;width:100%;padding:10px;background:#1A3B69;border-radius:7px;font-size:13px;font-weight:600;color:#fff;cursor:pointer;font-family:Inter,sans-serif;text-align:center;text-decoration:none;">Learn about membership →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPEAKERS — full width -->
+  <section class="speakers-section">
+    <div class="sec-label">Speakers</div>
+    <div class="speaker-grid">
+
+      <div class="speaker-card">
+        <div class="speaker-photo sp-1">
+          <!-- Replace <span> with <img src="photo.jpg" alt="Andrew Smith"> when photo is available -->
+          <span>AS</span>
+        </div>
+        <div class="speaker-name">Andrew Smith</div>
+        <div class="speaker-divider"></div>
+        <div class="speaker-role">Chief Executive Officer</div>
+        <div class="speaker-company">ADSO</div>
+        <div class="speaker-badge">Moderator</div>
+      </div>
+
+      <div class="speaker-card">
+        <div class="speaker-photo sp-2">
+          <span>MJ</span>
+        </div>
+        <div class="speaker-name">Maria Johnson</div>
+        <div class="speaker-divider"></div>
+        <div class="speaker-role">Chief Operations Officer</div>
+        <div class="speaker-company">Acme Dental Group</div>
+      </div>
+
+      <div class="speaker-card">
+        <div class="speaker-photo sp-3">
+          <span>RT</span>
+        </div>
+        <div class="speaker-name">Robert Torres</div>
+        <div class="speaker-divider"></div>
+        <div class="speaker-role">VP of Finance &amp; Strategy</div>
+        <div class="speaker-company">Pacific Dental Partners</div>
+      </div>
+
+      <div class="speaker-card">
+        <div class="speaker-photo sp-4">
+          <span>LC</span>
+        </div>
+        <div class="speaker-name">Laura Chen</div>
+        <div class="speaker-divider"></div>
+        <div class="speaker-role">Director of Analytics</div>
+        <div class="speaker-company">Smile Brands Inc.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-wrap">
+    <div class="cta-banner">
+      <div class="cta-text">
+        <h3>Ready to join the conversation?</h3>
+        <p>Free for ADSO members · October 22, 2025 · 2:00 – 3:00 PM ET via Zoom</p>
+      </div>
+      <div class="cta-actions">
+        <a class="cta-main-btn" href="https://us06web.zoom.us/webinar/register/WN_UDth7XnJRvyH7e_uWC2F4w" target="_blank" rel="noopener">Register on Zoom — It's Free →</a>
+        <div class="cta-sub">Non-members: contact membership@theadso.org</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer-strip">
+    <p>ADSO · Association of Dental Support Organizations · Washington, DC</p>
+    <div class="footer-links">
+      <a href="../index.html">Events</a>
+      <a href="#">Membership</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
