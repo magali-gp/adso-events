@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADSO Events 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #1A3B69; }
+    .page { max-width: 1100px; margin: 0 auto; }
+
+    /* ── NAV ── */
+    .nav {
+      background: #fff;
+      border-bottom: 1px solid #e8edf4;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-wordmark {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: #1A3B69;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a {
+      font-size: 13px;
+      color: #7a93b0;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: #1A3B69; }
+    .nav-links a.active {
+      color: #1A3B69;
+      border-bottom: 2px solid #E8543A;
+      padding-bottom: 3px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: #fff;
+      padding: 56px 40px 48px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      border-bottom: 1px solid #e8edf4;
+    }
+    .hero-text { flex: 1; }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #FFF0ED;
+      border: 1px solid #F2A4A2;
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin-bottom: 18px;
+    }
+    .hero-eyebrow span { font-size: 11px; color: #C04828; font-weight: 600; letter-spacing: 0.4px; }
+    .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: #E8543A; }
+    .hero-text h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      color: #1A3B69;
+      letter-spacing: -1px;
+      line-height: 1.05;
+    }
+    .hero-text h1 span { color: #E8543A; }
+    .hero-text p {
+      font-size: 15px;
+      color: #5a7399;
+      margin-top: 12px;
+      line-height: 1.7;
+      max-width: 460px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      margin-top: 32px;
+      border: 1px solid #e8edf4;
+      border-radius: 12px;
+      overflow: hidden;
+      width: fit-content;
+    }
+    .stat-item { padding: 16px 28px; text-align: center; border-right: 1px solid #e8edf4; }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Raleway', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #1A3B69;
+    }
+    .stat-lbl {
+      font-size: 10px;
+      color: #9ab0c8;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 3px;
+    }
+
+    /* Calendar widget */
+    .hero-cal {
+      background: #f8f9fc;
+      border: 1px solid #e8edf4;
+      border-radius: 14px;
+      padding: 22px 24px;
+      min-width: 210px;
+      flex-shrink: 0;
+    }
+    .hero-cal-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #9ab0c8;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .cal-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid #eef1f6;
+    }
+    .cal-row:last-child { border-bottom: none; }
+    .cal-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .cal-month { font-size: 10px; font-weight: 700; color: #9ab0c8; width: 28px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .cal-name { font-size: 13px; font-weight: 600; color: #1A3B69; }
+    .cal-city { font-size: 11px; color: #9ab0c8; }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: #e8edf4; }
+    .section-label span {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #9ab0c8;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── EVENTS SECTION ── */
+    .events-section { background: #fff; padding: 44px 40px; }
+
+    /* Flagship cards */
+    .flagship-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .flagship-card {
+      border-radius: 14px;
+      padding: 30px 28px 26px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.18s, box-shadow 0.18s;
+      text-decoration: none;
+      display: block;
+    }
+    .flagship-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(26,59,105,0.16); }
+    .flagship-card.summit { background: #1A3B69; border: 1px solid #1A3B69; }
+    .flagship-card.nextlevel { background: #0e3024; border: 1px solid #0e3024; }
+
+    .fc-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+    .fc-eyebrow.summit { color: #F2A4A2; }
+    .fc-eyebrow.nextlevel { color: #5DCAA5; }
+    .fc-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .fc-subtitle {
+      font-size: 10px;
+      color: rgba(255,255,255,0.38);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .fc-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 16px 0; }
+    .fc-meta { display: flex; flex-direction: column; gap: 6px; }
+    .fc-meta-row { display: flex; align-items: center; gap: 8px; }
+    .fc-icon { width: 13px; height: 13px; opacity: 0.4; flex-shrink: 0; }
+    .fc-meta-text { font-size: 12px; color: rgba(255,255,255,0.6); }
+    .fc-meta-text strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+    .fc-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      padding: 9px 18px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      border: none;
+      cursor: pointer;
+    }
+    .fc-cta.summit { background: #E8543A; color: #fff; }
+    .fc-cta.nextlevel { background: #1D9E75; color: #fff; }
+    .fc-expected { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 6px; }
+    .fc-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .fc-badge.main { background: rgba(232,84,58,0.18); color: #F2A4A2; border: 1px solid rgba(232,84,58,0.28); }
+    .fc-badge.mem { background: rgba(93,202,165,0.15); color: #5DCAA5; border: 1px solid rgba(93,202,165,0.25); }
+
+    /* Member event cards */
+    .member-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .member-card {
+      background: #f8f9fc;
+      border: 1px solid #e8edf4;
+      border-radius: 14px;
+      padding: 24px 26px 22px;
+      position: relative;
+      cursor: pointer;
+      transition: box-shadow 0.18s, border-color 0.18s;
+      text-decoration: none;
+      display: block;
+    }
+    .member-card:hover { box-shadow: 0 6px 24px rgba(26,59,105,0.09); border-color: #c8d6e8; }
+    .mc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 11px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-bottom: 14px;
+    }
+    .mc-badge.members { background: #EFF3F8; color: #2d5a98; border: 1px solid #c8d6e8; }
+    .mc-badge.guests { background: #FFF8EE; color: #9B5A0A; border: 1px solid #F2DBB3; }
+    .mc-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1A3B69;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .mc-desc { font-size: 13px; color: #7a93b0; line-height: 1.65; margin-bottom: 16px; }
+    .mc-divider { height: 1px; background: #e8edf4; margin-bottom: 14px; }
+    .mc-meta { display: flex; flex-direction: column; gap: 6px; }
+    .mc-meta-row { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #9ab0c8; }
+    .mc-meta-row strong { color: #1A3B69; font-weight: 500; }
+    .mc-arrow {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #e8edf4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── WEBINARS ── */
+    .webinars-section {
+      background: #f8f9fc;
+      padding: 40px;
+      border-top: 1px solid #e8edf4;
+    }
+    .webinar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .webinar-card {
+      background: #fff;
+      border: 1px solid #e8edf4;
+      border-radius: 10px;
+      padding: 18px 20px;
+      cursor: pointer;
+      transition: box-shadow 0.15s;
+      text-decoration: none;
+      display: block;
+    }
+    .webinar-card:hover { box-shadow: 0 4px 16px rgba(26,59,105,0.08); }
+    .wc-date {
+      font-size: 10px;
+      font-weight: 700;
+      color: #E8543A;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .wc-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1A3B69;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+    .wc-tag {
+      display: inline-flex;
+      padding: 2px 9px;
+      border-radius: 20px;
+      background: #EFF3F8;
+      font-size: 10px;
+      color: #5a7ea8;
+      font-weight: 600;
+    }
+    .webinar-see-all {
+      text-align: center;
+      margin-top: 22px;
+    }
+    .webinar-see-all button {
+      padding: 10px 26px;
+      border: 1px solid #dde3ec;
+      border-radius: 7px;
+      background: #fff;
+      font-size: 13px;
+      color: #7a93b0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .webinar-see-all button:hover { border-color: #1A3B69; color: #1A3B69; }
+
+    /* ── PAST EVENTS ── */
+    .past-toggle { background: #fff; border-top: 1px solid #e8edf4; }
+    .past-btn {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 16px 40px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: #7a93b0;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      width: 100%;
+    }
+    .past-btn .chevron { width: 17px; height: 17px; transition: transform 0.25s; }
+    .past-btn.open .chevron { transform: rotate(180deg); }
+    .past-events { display: none; padding: 0 40px 32px; background: #fff; }
+    .past-events.open { display: block; }
+    .past-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .past-card {
+      background: #f8f9fc;
+      border: 1px solid #e8edf4;
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .pc-year { font-size: 10px; font-weight: 700; color: #A3CAE2; letter-spacing: 0.8px; margin-bottom: 5px; }
+    .pc-name { font-family: 'Raleway', sans-serif; font-size: 14px; font-weight: 700; color: #1A3B69; line-height: 1.3; }
+    .pc-loc { font-size: 12px; color: #9ab0c8; margin-top: 4px; }
+
+    /* ── FOOTER ── */
+    .footer-strip {
+      background: #1A3B69;
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-strip p { font-size: 13px; color: rgba(163,202,226,0.65); }
+    .footer-cta {
+      padding: 9px 22px;
+      border: 1px solid rgba(163,202,226,0.4);
+      border-radius: 7px;
+      font-size: 13px;
+      color: #A3CAE2;
+      font-weight: 500;
+      cursor: pointer;
+      background: none;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-wordmark">ADSO</a>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Advocacy</a>
+      <a href="#">Membership</a>
+      <a href="index.html" class="active">Events</a>
+      <a href="#">Students</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-eyebrow"><div class="hero-dot"></div><span>4 events · 2026</span></div>
+      <h1>ADSO <span>Events</span></h1>
+      <p>Where DSO leaders come together — to learn, connect, and shape the future of dentistry.</p>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num">1,500+</div><div class="stat-lbl">Attendees</div></div>
+        <div class="stat-item"><div class="stat-num">4</div><div class="stat-lbl">Events</div></div>
+        <div class="stat-item"><div class="stat-num">4</div><div class="stat-lbl">Cities</div></div>
+      </div>
+    </div>
+    <div class="hero-cal">
+      <div class="hero-cal-title">2026 Calendar</div>
+      <div class="cal-row">
+        <div class="cal-dot" style="background:#A3CAE2"></div>
+        <div class="cal-month">MAR</div>
+        <div><div class="cal-name">Mid-Winter Tech</div><div class="cal-city">Las Vegas</div></div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-dot" style="background:#E8543A"></div>
+        <div class="cal-month">JUN</div>
+        <div><div class="cal-name">Annual Summit</div><div class="cal-city">Chicago</div></div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-dot" style="background:#F2DBB3"></div>
+        <div class="cal-month">OCT</div>
+        <div><div class="cal-name">Investor Conference</div><div class="cal-city">New York</div></div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-dot" style="background:#1D9E75"></div>
+        <div class="cal-month">OCT</div>
+        <div><div class="cal-name">NeXT Level</div><div class="cal-city">Dallas</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL 4 EVENTS -->
+  <section class="events-section">
+    <div class="section-label"><span>2026 Events</span></div>
+
+    <!-- Row 1: Flagship -->
+    <div class="flagship-grid">
+      <a href="#" class="flagship-card summit">
+        <div class="fc-badge main">Dentistry's Main Event</div>
+        <div class="fc-eyebrow summit">Annual Summit</div>
+        <div class="fc-title">ADSO Summit 2026</div>
+        <div class="fc-subtitle">15th Edition · Open to all</div>
+        <div class="fc-divider"></div>
+        <div class="fc-meta">
+          <div class="fc-meta-row">
+            <svg class="fc-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="2" stroke="white" stroke-width="1.2"/><path d="M5 2v2M11 2v2M2 7h12" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span class="fc-meta-text"><strong>June 15–17, 2026</strong></span>
+          </div>
+          <div class="fc-meta-row">
+            <svg class="fc-icon" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5S12.5 9.5 12.5 6C12.5 3.5 10.5 1.5 8 1.5z" stroke="white" stroke-width="1.2"/><circle cx="8" cy="6" r="1.5" stroke="white" stroke-width="1.2"/></svg>
+            <span class="fc-meta-text">Hyatt Regency, <strong>Chicago, IL</strong></span>
+          </div>
+          <div class="fc-meta-row">
+            <svg class="fc-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="white" stroke-width="1.2"/><path d="M8 4.5v3.5l2 1.5" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span class="fc-meta-text">Members &amp; non-members welcome</span>
+          </div>
+        </div>
+        <div class="fc-expected">~1,000 attendees</div>
+        <div class="fc-cta summit">View Summit →</div>
+      </a>
+
+      <a href="#" class="flagship-card nextlevel">
+        <div class="fc-badge mem">Members Only</div>
+        <div class="fc-eyebrow nextlevel">NeXT Level Conference</div>
+        <div class="fc-title">ADSO NeXT Level</div>
+        <div class="fc-subtitle">Mid-Sized DSO Market</div>
+        <div class="fc-divider"></div>
+        <div class="fc-meta">
+          <div class="fc-meta-row">
+            <svg class="fc-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="2" stroke="white" stroke-width="1.2"/><path d="M5 2v2M11 2v2M2 7h12" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span class="fc-meta-text"><strong>October 21–23, 2026</strong></span>
+          </div>
+          <div class="fc-meta-row">
+            <svg class="fc-icon" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5S12.5 9.5 12.5 6C12.5 3.5 10.5 1.5 8 1.5z" stroke="white" stroke-width="1.2"/><circle cx="8" cy="6" r="1.5" stroke="white" stroke-width="1.2"/></svg>
+            <span class="fc-meta-text">The Adolphus Hotel, <strong>Dallas, TX</strong></span>
+          </div>
+          <div class="fc-meta-row">
+            <svg class="fc-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="white" stroke-width="1.2"/><path d="M8 4.5v3.5l2 1.5" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span class="fc-meta-text">CEOs from mid-sized DSOs &amp; suppliers</span>
+          </div>
+        </div>
+        <div class="fc-expected">~500 attendees</div>
+        <div class="fc-cta nextlevel">View NeXT Level →</div>
+      </a>
+    </div>
+
+    <!-- Row 2: Member events -->
+    <div class="member-grid">
+      <a href="#" class="member-card">
+        <div class="mc-arrow">
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="#1A3B69" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="mc-badge members">Members Only</div>
+        <div class="mc-title">Mid-Winter Tech Meeting</div>
+        <div class="mc-desc">Invitation-only gathering on technology trends shaping DSO operations. Developed in partnership with the Dental Innovation Alliance.</div>
+        <div class="mc-divider"></div>
+        <div class="mc-meta">
+          <div class="mc-meta-row">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="2" stroke="#9ab0c8" stroke-width="1.2"/><path d="M5 2v2M11 2v2M2 7h12" stroke="#9ab0c8" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span><strong>March 19–20, 2026</strong></span>
+          </div>
+          <div class="mc-meta-row">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5S12.5 9.5 12.5 6C12.5 3.5 10.5 1.5 8 1.5z" stroke="#9ab0c8" stroke-width="1.2"/><circle cx="8" cy="6" r="1.5" stroke="#9ab0c8" stroke-width="1.2"/></svg>
+            <span>Wynn Hotel, <strong>Las Vegas, NV</strong></span>
+          </div>
+          <div class="mc-meta-row">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" stroke="#9ab0c8" stroke-width="1.2"/><path d="M6 8l1.5 1.5L10 6.5" stroke="#9ab0c8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>DSO CEOs + select tech vendors · ~50 people</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="member-card">
+        <div class="mc-arrow">
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="#1A3B69" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="mc-badge guests">Members + Select Guests</div>
+        <div class="mc-title">Annual Investor Conference</div>
+        <div class="mc-desc">Exclusive event connecting investors with top DSO leaders. Hosted by Holland &amp; Knight, sponsored by Houlihan Lokey.</div>
+        <div class="mc-divider"></div>
+        <div class="mc-meta">
+          <div class="mc-meta-row">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="2" stroke="#9ab0c8" stroke-width="1.2"/><path d="M5 2v2M11 2v2M2 7h12" stroke="#9ab0c8" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span><strong>October 1, 2026</strong></span>
+          </div>
+          <div class="mc-meta-row">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5S12.5 9.5 12.5 6C12.5 3.5 10.5 1.5 8 1.5z" stroke="#9ab0c8" stroke-width="1.2"/><circle cx="8" cy="6" r="1.5" stroke="#9ab0c8" stroke-width="1.2"/></svg>
+            <span>Holland &amp; Knight Office, <strong>New York, NY</strong></span>
+          </div>
+          <div class="mc-meta-row">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" stroke="#9ab0c8" stroke-width="1.2"/><path d="M6 8l1.5 1.5L10 6.5" stroke="#9ab0c8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>DSO CEOs &amp; Investment Firms · ~50 people</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- WEBINARS -->
+  <section class="webinars-section">
+    <div class="section-label"><span>Member Webinars &amp; Exchange</span></div>
+    <div class="webinar-grid">
+      <a href="webinar/index.html" class="webinar-card">
+        <div class="wc-date">Dec 2025</div>
+        <div class="wc-title">Latest Dental Market Trends &amp; Provider Performance Benchmarking</div>
+        <div class="wc-tag">Analytics</div>
+      </a>
+      <a href="webinar/index.html" class="webinar-card">
+        <div class="wc-date">Dec 2025</div>
+        <div class="wc-title">CEO Straight Talks: Inside the C-Suite with Reveal Dental's Dustin Netral</div>
+        <div class="wc-tag">Leadership</div>
+      </a>
+      <a href="webinar/index.html" class="webinar-card">
+        <div class="wc-date">Oct 2025</div>
+        <div class="wc-title">How DSOs Can Standardize, Streamline &amp; Gain Real-Time Visibility</div>
+        <div class="wc-tag">Operations</div>
+      </a>
+      <a href="webinar/index.html" class="webinar-card">
+        <div class="wc-date">Oct 2025</div>
+        <div class="wc-title">New H-1B Visa Rules and Gold Card Program for DSOs</div>
+        <div class="wc-tag">Policy</div>
+      </a>
+      <a href="webinar/index.html" class="webinar-card">
+        <div class="wc-date">Sep 2025</div>
+        <div class="wc-title">Back to Basics: Streamlining DSOs for Maximum Efficiency</div>
+        <div class="wc-tag">Operations</div>
+      </a>
+      <a href="webinar/index.html" class="webinar-card">
+        <div class="wc-date">Jul 2025</div>
+        <div class="wc-title">Partnerships &amp; Equity Solutions for Impactful Organizational Growth</div>
+        <div class="wc-tag">Finance</div>
+      </a>
+    </div>
+    <div class="webinar-see-all">
+      <button>View all webinars →</button>
+    </div>
+  </section>
+
+  <!-- PAST EVENTS -->
+  <div class="past-toggle">
+    <button class="past-btn" id="pastBtn" onclick="togglePast()">
+      <svg class="chevron" viewBox="0 0 18 18" fill="none"><path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="#9ab0c8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Past events
+    </button>
+  </div>
+  <div class="past-events" id="pastEvents">
+    <div class="past-grid">
+      <div class="past-card"><div class="pc-year">2025</div><div class="pc-name">ADSO Annual Summit</div><div class="pc-loc">San Diego, CA</div></div>
+      <div class="past-card"><div class="pc-year">2024</div><div class="pc-name">ADSO Annual Summit</div><div class="pc-loc">Orlando, FL</div></div>
+      <div class="past-card"><div class="pc-year">2024</div><div class="pc-name">ADSO NeXT Level</div><div class="pc-loc">Mid-Market Conf.</div></div>
+      <div class="past-card"><div class="pc-year">2023</div><div class="pc-name">ADSO Annual Summit</div><div class="pc-loc">Las Vegas, NV</div></div>
+      <div class="past-card"><div class="pc-year">2023</div><div class="pc-name">ADSO NeXT Level</div><div class="pc-loc">Mid-Market</div></div>
+      <div class="past-card"><div class="pc-year">2022</div><div class="pc-name">ADSO Annual Summit</div><div class="pc-loc">Austin, TX</div></div>
+      <div class="past-card"><div class="pc-year">2021</div><div class="pc-name">Leading the Evolution</div><div class="pc-loc">of Dentistry</div></div>
+      <div class="past-card"><div class="pc-year">2019</div><div class="pc-name">ADSO Annual Summit</div><div class="pc-loc">Nashville, TN</div></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer-strip">
+    <p>ADSO · Association of Dental Support Organizations · Washington, DC</p>
+    <button class="footer-cta">Become a member</button>
+  </footer>
+
+</div>
+<script>
+  function togglePast() {
+    const btn = document.getElementById('pastBtn');
+    const panel = document.getElementById('pastEvents');
+    btn.classList.toggle('open');
+    panel.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
